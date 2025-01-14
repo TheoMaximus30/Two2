@@ -1,3 +1,20 @@
 {
   "files": {}
-}
+}# This script securely removes a file from a GitHub repository using git commands.
+# Ensure you have git installed and are authenticated with the repository.
+
+import os
+
+# File to be removed
+file_to_remove = 'file_to_remove.txt'  # Replace with the actual file name
+
+# Check if the file exists in the current directory
+if not os.path.exists(file_to_remove):
+    print("The file '" + file_to_remove + "' does not exist in the current directory.")
+else:
+    # Remove the file securely using git
+    os.system(f"git rm {file_to_remove}")
+    os.system("git commit -m 'Removed " + file_to_remove + " securely'")
+    os.system("git push")
+
+    print("The file '" + file_to_remove + "' has been securely removed from the repository.")
